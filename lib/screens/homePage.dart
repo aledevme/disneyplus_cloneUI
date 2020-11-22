@@ -9,21 +9,41 @@ class _HomePageScreenState extends State<HomePageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBar(),
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+          color: Color(0xff373a41)
+          /*gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
             colors: [
-              Color(0xff1d3461),
-              Colors.blue[900]
+              Colors.blueGrey[900],
+              Colors.blue[100]
             ]
-          )
-        ),
-        child: Center(
-          child: Text('Disney + clone'),
+          )*/
         ),
       ),
+    );
+  }
+
+  Widget appBar(){
+    return AppBar(
+      backgroundColor: Color(0xff373a41),
+      elevation: 0,
+      title: Image(
+        height: 100,
+        width: 100,
+        image: AssetImage('assets/poster/disneypluslogowhite.png'),
+      ),
+    );
+  }
+
+  Widget sliderTopContent(){
+
+  }
+  Widget brands(){
+    return ListView.builder(
+
     );
   }
 }
