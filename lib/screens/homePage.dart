@@ -1,3 +1,4 @@
+import 'package:disneyplus_cloneui/models/Brand.dart';
 import 'package:disneyplus_cloneui/models/Content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -39,7 +40,29 @@ class _HomePageScreenState extends State<HomePageScreen> {
       urlImage: 'assets/poster/freesolo.jpg',
       notification: 'Now Streaming'
     ),
-    
+  ];
+
+  List<Brand> brandsItems = [
+    Brand(
+      brandName: 'Disney',
+      urlImage: 'assets/poster/brands/disney.png'
+    ),
+    Brand(
+      brandName: 'Pixar',
+      urlImage: 'assets/poster/brands/pixar.png'
+    ),
+    Brand(
+      brandName: 'Marvel',
+      urlImage: 'assets/poster/brands/marvel.png'
+    ),
+    Brand(
+      brandName: 'Star wars',
+      urlImage: 'assets/poster/brands/starwars.png'
+    ),
+    Brand(
+      brandName: 'National Geographic',
+      urlImage: 'assets/poster/brands/ng.png'
+    )
   ];
 
 
@@ -64,7 +87,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
             SliverList(
               delegate: SliverChildListDelegate( 
                 [
-                  sliderTopContent()
+                  sliderTopContent(),
+                  brands()
                 ]
               ) 
             )
@@ -125,7 +149,40 @@ class _HomePageScreenState extends State<HomePageScreen> {
       ),
     );
   }
+
   Widget brands(){
-    
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 25
+      ),
+      child: Wrap(
+        alignment: WrapAlignment.spaceBetween,
+        children: brandsItems.asMap().map((int index, value) => 
+          MapEntry(index, 
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xff1d3461),
+                    Colors.blue[900]
+                  ]
+                )
+              ),
+              padding: EdgeInsets.all(5),
+              child: FadeInImage(
+                width:50,
+                height: 50,
+                fit: BoxFit.fitWidth,
+                image: AssetImage(value.urlImage),
+                placeholder: AssetImage('assets/poster/loader.gif'),
+              ),
+            )
+          )
+        ).values.toList(),
+      )
+    );
   }
 }
