@@ -92,15 +92,28 @@ class _HomePageScreenState extends State<HomePageScreen> {
         controller: _controller,
         itemCount: contentsSwiper.length,
         itemBuilder: (BuildContext context, int index){
-          return Container(
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: FadeInImage(
-                  fit: BoxFit.fitWidth,
+          return ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: Stack(
+              fit: StackFit.expand,
+              children: [
+                FadeInImage(
+                  fit: BoxFit.cover,
                   image: AssetImage(contentsSwiper[index].urlImage),
                   placeholder: AssetImage('assets/poster/loader.gif'),
-              ),
-            ),
+                ),
+                Positioned(
+                  bottom: 20,
+                  left: 10,
+                  child: Text('Now Streaming',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500
+                    ),
+                  ),
+                )
+              ],
+            )
           );
         },      
       ),
