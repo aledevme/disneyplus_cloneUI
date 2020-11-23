@@ -14,15 +14,16 @@ class _HomePageScreenState extends State<HomePageScreen> {
   List<Content> contentsSwiper = [
     Content(
       id: 1,
-      urlImage: 'assets/poster/darkphoenix.jpg' 
+      urlImage: 'assets/poster/darkphoenix.jpg',
     ),
     Content(
       id: 2,
-      urlImage: 'assets/poster/endgame.jpg' 
+      urlImage: 'assets/poster/endgame.jpg'
     ),
     Content(
       id: 3,
-      urlImage: 'assets/poster/mandalorian.jpg' 
+      urlImage: 'assets/poster/mandalorian.jpg',
+      notification: 'New episode now streaming'
     ),
     Content(
       id: 4,
@@ -30,11 +31,13 @@ class _HomePageScreenState extends State<HomePageScreen> {
     ),
     Content(
       id: 5,
-      urlImage: 'assets/poster/riseofskywalker.jpg' 
+      urlImage: 'assets/poster/riseofskywalker.jpg',
+      notification: 'Coming to disney+ on December 6'
     ),
     Content(
       id: 6,
-      urlImage: 'assets/poster/freesolo.jpg' 
+      urlImage: 'assets/poster/freesolo.jpg',
+      notification: 'Now Streaming'
     ),
     
   ];
@@ -85,6 +88,9 @@ class _HomePageScreenState extends State<HomePageScreen> {
 
   Widget sliderTopContent(){
     return Container(
+        padding: EdgeInsets.symmetric(
+          vertical: 10
+        ),
         height: 200,
         child: Swiper(
         viewportFraction: 0.9,
@@ -105,7 +111,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                 Positioned(
                   bottom: 20,
                   left: 10,
-                  child: Text('Now Streaming',
+                  child: Text(contentsSwiper[index].notification == null ? '' : contentsSwiper[index].notification,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w500
